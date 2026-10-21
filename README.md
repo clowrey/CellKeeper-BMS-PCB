@@ -39,16 +39,6 @@ carries the logo and connector labels, which can be printed as a contrasting-col
 clear light pipes over the LEDs. Ready-to-print STEP and STL files are in `enclosure/output/print/`.
 The board shows the case in KiCad's 3D viewer through the `ENC1` footprint.
 
-## Getting Started
-
-1. Install [KiCad 10.0+](https://www.kicad.org/download/)
-2. Clone this repository
-3. Open the board's `.kicad_pro` in `CellKeeper/`, `isoSPI-Hat/` or `Precharge/`. Each project's
-   `sym-lib-table` / `fp-lib-table` load the shared libraries from `../lib`.
-
-To order the boards on one panel, panelise the finished boards at order time (e.g. with KiKit)
-rather than merging the projects again.
-
 ## Safety
 
 ⚠️ This board interfaces with 400 V battery packs that can deliver **lethal** current. Only qualified personnel should work on high-voltage systems. This is a v1.1 development design — untested, no warranty, use at your own risk.

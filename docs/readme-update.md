@@ -67,7 +67,7 @@ connectors and mounting points". Confirm the exact pack/vehicle wording.
 | BMB communication: isoSPI master with galvanic isolation (Manchester encoding via PIO) | discrete isoSPI: SP3485 driver (U21), AM26LV32 receiver (U22), HM2113 transformer (TR1); BMB-side centre tap floating for ESD | add the part numbers / "transformer-isolated" |
 | CAN bus: 500 kbps, hardware transceiver | **two** CAN interfaces, both ISO1050: inverter CAN (U5) is isolated with its own DC-DC (U4) and shares RJ45 J4 with the E-stop/aux lines (default jumpers suit Deye/BYD pinout; Foxess swaps CANH/L); inter-BMS CAN2 (U10) runs from board 5 V and GND (not isolated, silkscreen "NON ISOLATED") on dual pass-through RJ45 J5. The bit rate is firmware, not hardware | "Two CAN buses: isolated inverter CAN and inter-BMS CAN" |
 | Contactor control: 4-channel PWM outputs with inrush limiting | 4 low-side channels (FC+, FC-, Link+, Link-): BSC0805LS MOSFETs (Q1-Q4) driven by two UCC27524 gate drivers (U1, U11) with a shared enable `CTR_EN` (silkscreen "Supervisor Enable"; verify what drives it); FC negative also controls the precharge bypass; contactor supply sensed on an ADC (VContactor Sense). "Inrush limiting" isn't visible in hardware: verify whether that means firmware PWM economising or the precharge | drop or reword "inrush limiting"; mention the enable and the precharge role |
-| Input: 12 V nominal; up to 400 V DC pack voltage | J1 has separate **logic** and **contactor** supply inputs (GND, GND, CTR, LOGIC), both sensed; TPS5430 5 V 3 A buck (36 V max, intended for 10-16 V); silkscreen says **12-16 V** (the printed case lid says 13-16 V); chassis ground terminal J2 ("IMPORTANT connect chassis GND first") | "12-16 V logic and contactor supplies (separate inputs)"; settle 12-16 V vs 13-16 V |
+| Input: 12 V nominal; up to 400 V DC pack voltage (**updated**: now "Input: 13–16 V logic and contactor supplies (separate inputs)" and "HV battery: 400 V nominal") | J1 has separate **logic** and **contactor** supply inputs (GND, GND, CTR, LOGIC), both sensed; TPS5430 5 V 3 A buck (36 V max, intended for 10-16 V); silkscreen says **12-16 V** (the printed case lid says 13-16 V); chassis ground terminal J2 ("IMPORTANT connect chassis GND first") | "12-16 V logic and contactor supplies (separate inputs)"; settle 12-16 V vs 13-16 V |
 
 ### Missing from the README
 
@@ -99,5 +99,5 @@ setup" (PCS/experimental parts); keep the "untested" wording until those are ver
 1. Re-render the images (above) after board or case changes, and check them before committing.
 2. Re-check the Overview against the BOM (`production/*_bom.csv`) for part changes.
 3. Keep the version in the title, the safety note and the image alt text in step.
-4. Confirm the open questions above: what drives `CTR_EN`, "inrush limiting", 12-16 V vs 13-16 V,
-   the Tesla pack/vehicle wording.
+4. Confirm the open questions above: what drives `CTR_EN`, "inrush limiting", the Tesla
+   pack/vehicle wording. (Supply range settled as 13-16 V; the board silkscreen still says 12-16V.)

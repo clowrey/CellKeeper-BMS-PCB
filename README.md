@@ -12,7 +12,8 @@ KiCad PCB design for the **CellKeeper Battery Management System**, a replacement
 - **BMB communication:** isoSPI master with galvanic isolation (Manchester encoding via PIO)
 - **CAN bus:** 500 kbps, hardware transceiver
 - **Contactor control:** 4-channel PWM outputs with inrush limiting
-- **Input:** 12 V nominal; rated for up to 400 V DC pack voltage
+- **Input:** 13–16 V logic and contactor supplies (separate inputs)
+- **HV battery:** 400 V nominal
 
 ## Repository Contents
 

@@ -7863,6 +7863,559 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "CellKeeper_Local:Connector__TE_173864-1"
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "J"
+				(at 0 1.905 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "173864-1"
+				(at 0 -0.635 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "CellKeeper_Local:BMS_Library__CONN_173864-1_TYC_Empty_Pins"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://www.te.com/en/product-173864-1.html"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "TE 070 Multilock 24-position right-angle PCB header. Pins drawn as seen on the PCB top view with the header at 180 degrees with the mating face down. TE circuit numbering: 1-10 outer row, 11-24 inner row."
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MFR Part #" "173864-1"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "connector multilock 070 TE 173864"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "*173864*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Connector__TE_173864-1_0_1"
+				(rectangle
+					(start -27.94 5.08)
+					(end 25.4 -5.08)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(text "mating face"
+					(at 0 -3.556 0)
+					(effects
+						(font
+							(size 1.016 1.016)
+						)
+					)
+				)
+			)
+			(symbol "Connector__TE_173864-1_1_1"
+				(pin passive line
+					(at 22.86 7.62 270)
+					(length 2.54)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 20.32 7.62 270)
+					(length 2.54)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 7.62 7.62 270)
+					(length 2.54)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 5.08 7.62 270)
+					(length 2.54)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -2.54 7.62 270)
+					(length 2.54)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 7.62 270)
+					(length 2.54)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -7.62 7.62 270)
+					(length 2.54)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -20.32 7.62 270)
+					(length 2.54)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "8"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -22.86 7.62 270)
+					(length 2.54)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "9"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -25.4 7.62 270)
+					(length 2.54)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "10"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 22.86 -7.62 90)
+					(length 2.54)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "11"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 20.32 -7.62 90)
+					(length 2.54)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "12"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 15.24 -7.62 90)
+					(length 2.54)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "13"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 12.7 -7.62 90)
+					(length 2.54)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "14"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 7.62 -7.62 90)
+					(length 2.54)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "15"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 5.08 -7.62 90)
+					(length 2.54)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "16"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -2.54 -7.62 90)
+					(length 2.54)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "17"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 -7.62 90)
+					(length 2.54)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "18"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -7.62 -7.62 90)
+					(length 2.54)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "19"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -12.7 -7.62 90)
+					(length 2.54)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "20"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -15.24 -7.62 90)
+					(length 2.54)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "21"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -20.32 -7.62 90)
+					(length 2.54)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "22"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -22.86 -7.62 90)
+					(length 2.54)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "23"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -25.4 -7.62 90)
+					(length 2.54)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "24"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "CellKeeper_Local:Connector__TestPoint_2Pole"
 			(pin_names
 				(offset 0.762)
@@ -19954,559 +20507,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "CellKeeper_Local:Connector__TE_173864-1"
-			(pin_names
-				(offset 1.016)
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "J"
-				(at 0 1.905 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "173864-1"
-				(at 0 -0.635 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" "CellKeeper_Local:BMS_Library__CONN_173864-1_TYC_Empty_Pins"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Datasheet" "https://www.te.com/en/product-173864-1.html"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Description" "TE 070 Multilock 24-position right-angle PCB header. Pins drawn as seen on the PCB top view with the header at 180 degrees with the mating face down. TE circuit numbering: 1-10 outer row, 11-24 inner row."
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "MFR Part #" "173864-1"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_keywords" "connector multilock 070 TE 173864"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_fp_filters" "*173864*"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "Connector__TE_173864-1_0_1"
-				(rectangle
-					(start -27.94 5.08)
-					(end 25.4 -5.08)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type background)
-					)
-				)
-				(text "mating face"
-					(at 0 -3.556 0)
-					(effects
-						(font
-							(size 1.016 1.016)
-						)
-					)
-				)
-			)
-			(symbol "Connector__TE_173864-1_1_1"
-				(pin passive line
-					(at 22.86 7.62 270)
-					(length 2.54)
-					(name ""
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 20.32 7.62 270)
-					(length 2.54)
-					(name ""
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 7.62 7.62 270)
-					(length 2.54)
-					(name ""
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 5.08 7.62 270)
-					(length 2.54)
-					(name ""
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "4"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -2.54 7.62 270)
-					(length 2.54)
-					(name ""
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "5"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -5.08 7.62 270)
-					(length 2.54)
-					(name ""
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "6"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -7.62 7.62 270)
-					(length 2.54)
-					(name ""
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "7"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -20.32 7.62 270)
-					(length 2.54)
-					(name ""
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "8"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -22.86 7.62 270)
-					(length 2.54)
-					(name ""
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "9"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -25.4 7.62 270)
-					(length 2.54)
-					(name ""
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "10"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 22.86 -7.62 90)
-					(length 2.54)
-					(name ""
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "11"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 20.32 -7.62 90)
-					(length 2.54)
-					(name ""
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "12"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 15.24 -7.62 90)
-					(length 2.54)
-					(name ""
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "13"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 12.7 -7.62 90)
-					(length 2.54)
-					(name ""
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "14"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 7.62 -7.62 90)
-					(length 2.54)
-					(name ""
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "15"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 5.08 -7.62 90)
-					(length 2.54)
-					(name ""
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "16"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -2.54 -7.62 90)
-					(length 2.54)
-					(name ""
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "17"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -5.08 -7.62 90)
-					(length 2.54)
-					(name ""
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "18"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -7.62 -7.62 90)
-					(length 2.54)
-					(name ""
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "19"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -12.7 -7.62 90)
-					(length 2.54)
-					(name ""
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "20"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -15.24 -7.62 90)
-					(length 2.54)
-					(name ""
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "21"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -20.32 -7.62 90)
-					(length 2.54)
-					(name ""
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "22"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -22.86 -7.62 90)
-					(length 2.54)
-					(name ""
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "23"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -25.4 -7.62 90)
-					(length 2.54)
-					(name ""
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "24"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 	)
 	(rectangle
 		(start 641.985 433.705)
@@ -20773,7 +20773,7 @@
 	)
 	(rectangle
 		(start 254 272.415)
-		(end 545.465 356.235)
+		(end 546.1 356.235)
 		(stroke
 			(width 0)
 			(type default)
@@ -21428,9 +21428,9 @@
 		)
 		(uuid "6ba2a6f7-3c7d-49f2-8a07-341e2c874f82")
 	)
-	(text "10V-16V input"
+	(text "13V-16V input"
 		(exclude_from_sim no)
-		(at 32.512 24.384 0)
+		(at 23.876 35.306 90)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -21726,7 +21726,7 @@
 	)
 	(text "Power Input"
 		(exclude_from_sim no)
-		(at 82.042 21.082 0)
+		(at 89.154 20.574 0)
 		(effects
 			(font
 				(size 2.54 2.54)
@@ -21904,7 +21904,7 @@
 	)
 	(text "HV system diagram and the precharge PTC board are in ../Precharge (Precharge.kicad_sch).\nThe isoSPI hat is in ../isoSPI-Hat (isoSPI-Hat.kicad_sch)."
 		(exclude_from_sim no)
-		(at 669.798 295.402 0)
+		(at 621.538 413.258 0)
 		(effects
 			(font
 				(size 2.54 2.54)
@@ -22060,7 +22060,7 @@
 	)
 	(text "Redundant connectors"
 		(exclude_from_sim no)
-		(at 499.618 418.592 0)
+		(at 498.094 427.99 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -22078,6 +22078,16 @@
 			(justify left bottom)
 		)
 		(uuid "fdabae45-1531-488f-9e1e-ebd90ae78215")
+	)
+	(text "Matching connector: WJ15EDGK-3.81-04P-14-00A"
+		(exclude_from_sim no)
+		(at 48.514 22.098 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "fe1a86f0-a1ca-4a0a-91e5-310a48c6290c")
 	)
 	(text_box "- need to energize one more contactor constantly\n- not as standard Pre-charge wiring\n"
 		(exclude_from_sim no)
@@ -24745,126 +24755,6 @@
 	)
 	(wire
 		(pts
-			(xy 466.09 393.7) (xy 466.09 391.16)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "af06ca47-f59b-4047-9f52-e9156309aa38")
-	)
-	(wire
-		(pts
-			(xy 466.09 391.16) (xy 461.01 391.16)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "18f7f5e3-2358-4bb3-8221-60d392f9ddc7")
-	)
-	(wire
-		(pts
-			(xy 483.87 393.7) (xy 483.87 386.08)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "10bf4b7d-0a00-42d3-9716-6bca98abc172")
-	)
-	(wire
-		(pts
-			(xy 483.87 386.08) (xy 461.01 386.08)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "6e59765a-8b74-4bd7-9e58-4edd209e4da5")
-	)
-	(wire
-		(pts
-			(xy 496.57 393.7) (xy 496.57 386.08)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "79362cb1-d04b-49fb-8c90-68a620279c77")
-	)
-	(wire
-		(pts
-			(xy 496.57 386.08) (xy 519.43 386.08)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c15fb4cc-5edc-48db-9ac7-c0c30b1caafd")
-	)
-	(wire
-		(pts
-			(xy 514.35 393.7) (xy 514.35 391.16)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "545bd141-8d64-4963-b5d7-ca0dd7c3f6df")
-	)
-	(wire
-		(pts
-			(xy 514.35 391.16) (xy 519.43 391.16)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3215f0ea-b6d5-408d-9882-9b642d545460")
-	)
-	(wire
-		(pts
-			(xy 471.17 408.94) (xy 471.17 411.48)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "5908efda-319a-4e8a-8a4c-a4062bca4705")
-	)
-	(wire
-		(pts
-			(xy 471.17 411.48) (xy 461.01 411.48)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "eab71c15-8a6c-4e44-966d-95026631de9a")
-	)
-	(wire
-		(pts
-			(xy 506.73 408.94) (xy 506.73 411.48)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "282790c8-f14a-4025-beca-b962c5d4295d")
-	)
-	(wire
-		(pts
-			(xy 506.73 411.48) (xy 519.43 411.48)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c893fb50-5ac2-4231-8fef-a5401c0ac60b")
-	)
-	(wire
-		(pts
 			(xy 184.15 228.6) (xy 184.15 231.14)
 		)
 		(stroke
@@ -25755,6 +25645,16 @@
 	)
 	(wire
 		(pts
+			(xy 483.87 393.7) (xy 483.87 386.08)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "10bf4b7d-0a00-42d3-9716-6bca98abc172")
+	)
+	(wire
+		(pts
 			(xy 78.74 488.95) (xy 82.55 488.95)
 		)
 		(stroke
@@ -26212,6 +26112,16 @@
 			(type default)
 		)
 		(uuid "18c8521f-6862-4a66-8491-ec883621cec9")
+	)
+	(wire
+		(pts
+			(xy 466.09 391.16) (xy 461.01 391.16)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "18f7f5e3-2358-4bb3-8221-60d392f9ddc7")
 	)
 	(wire
 		(pts
@@ -27145,6 +27055,16 @@
 	)
 	(wire
 		(pts
+			(xy 506.73 408.94) (xy 506.73 411.48)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "282790c8-f14a-4025-beca-b962c5d4295d")
+	)
+	(wire
+		(pts
 			(xy 782.32 184.15) (xy 797.56 184.15)
 		)
 		(stroke
@@ -27752,6 +27672,16 @@
 			(type default)
 		)
 		(uuid "31fff2b2-2a2e-41b3-8bdf-e77749e7f940")
+	)
+	(wire
+		(pts
+			(xy 514.35 391.16) (xy 519.43 391.16)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3215f0ea-b6d5-408d-9882-9b642d545460")
 	)
 	(wire
 		(pts
@@ -29815,6 +29745,16 @@
 	)
 	(wire
 		(pts
+			(xy 514.35 393.7) (xy 514.35 391.16)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "545bd141-8d64-4963-b5d7-ca0dd7c3f6df")
+	)
+	(wire
+		(pts
 			(xy 297.18 322.58) (xy 297.18 321.31)
 		)
 		(stroke
@@ -30162,6 +30102,16 @@
 			(type default)
 		)
 		(uuid "5907436d-4c84-4be0-922a-96417e12bbd1")
+	)
+	(wire
+		(pts
+			(xy 471.17 408.94) (xy 471.17 411.48)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5908efda-319a-4e8a-8a4c-a4062bca4705")
 	)
 	(wire
 		(pts
@@ -31315,6 +31265,16 @@
 	)
 	(wire
 		(pts
+			(xy 483.87 386.08) (xy 461.01 386.08)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6e59765a-8b74-4bd7-9e58-4edd209e4da5")
+	)
+	(wire
+		(pts
 			(xy 594.36 96.52) (xy 585.47 96.52)
 		)
 		(stroke
@@ -31912,6 +31872,16 @@
 			(type default)
 		)
 		(uuid "792b6919-884f-4e75-8727-6b24c66546fe")
+	)
+	(wire
+		(pts
+			(xy 496.57 393.7) (xy 496.57 386.08)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "79362cb1-d04b-49fb-8c90-68a620279c77")
 	)
 	(wire
 		(pts
@@ -35205,6 +35175,16 @@
 	)
 	(wire
 		(pts
+			(xy 466.09 393.7) (xy 466.09 391.16)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "af06ca47-f59b-4047-9f52-e9156309aa38")
+	)
+	(wire
+		(pts
 			(xy 782.32 173.99) (xy 797.56 173.99)
 		)
 		(stroke
@@ -36315,6 +36295,16 @@
 	)
 	(wire
 		(pts
+			(xy 496.57 386.08) (xy 519.43 386.08)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c15fb4cc-5edc-48db-9ac7-c0c30b1caafd")
+	)
+	(wire
+		(pts
 			(xy 300.99 214.63) (xy 300.99 217.17)
 		)
 		(stroke
@@ -36692,6 +36682,16 @@
 			(type default)
 		)
 		(uuid "c860ca5e-d516-4cc5-87af-715c190ed5dd")
+	)
+	(wire
+		(pts
+			(xy 506.73 411.48) (xy 519.43 411.48)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c893fb50-5ac2-4231-8fef-a5401c0ac60b")
 	)
 	(wire
 		(pts
@@ -38942,6 +38942,16 @@
 			(type default)
 		)
 		(uuid "ea9565cc-145a-481d-aa12-948784ead07b")
+	)
+	(wire
+		(pts
+			(xy 471.17 411.48) (xy 461.01 411.48)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "eab71c15-8a6c-4e44-966d-95026631de9a")
 	)
 	(wire
 		(pts
@@ -48950,9 +48960,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "Screw_Terminal_01x04"
-			(at 46.736 25.908 0)
-			(hide yes)
+		(property "Value" "WJ15EDGRC-3.81-04P-14-00A"
+			(at 55.118 25.146 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -54339,9 +54348,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "Screw_Terminal_01x04"
+		(property "Value" "WJ15EDGRC-3.81-04P-14-00A"
 			(at 487.934 338.582 0)
-			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -56876,6 +56884,84 @@
 		)
 	)
 	(symbol
+		(lib_id "CellKeeper_Local:Mechanical__MountingHole_Pad")
+		(at 972.82 181.61 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp yes)
+		(uuid "2073c140-8d3b-4a68-b3a8-0d675c8028ee")
+		(property "Reference" "H8"
+			(at 975.36 179.0699 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "MountingHole_Pad"
+			(at 975.36 181.6099 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "CellKeeper_Local:MountingHole__MountingHole_3.7mm"
+			(at 972.82 181.61 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 972.82 181.61 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Mounting Hole with connection"
+			(at 972.82 181.61 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "1c01734a-6343-454f-a52a-4b52daf88077")
+		)
+		(instances
+			(project "CellKeeper"
+				(path "/5d962221-5e0a-481f-afc5-67c7ec101fc1"
+					(reference "H8")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "CellKeeper_Local:Device__C_Small")
 		(at 102.87 320.04 180)
 		(unit 1)
@@ -59303,8 +59389,8 @@
 				(justify right)
 			)
 		)
-		(property "Value" "Screw_Terminal_01x01"
-			(at 23.368 57.912 0)
+		(property "Value" "T34008"
+			(at 23.114 61.468 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -87822,131 +87908,6 @@
 		)
 	)
 	(symbol
-		(lib_id "CellKeeper_Local:Connector__USB_C_Receptacle_USB2.0_16P")
-		(at 603.25 55.88 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "a2479082-89cb-4742-b4de-7e68102dad53")
-		(property "Reference" "J13"
-			(at 603.25 33.02 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "USB_C_Receptacle_USB2.0_16P"
-			(at 603.25 35.56 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 607.06 55.88 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://www.usb.org/sites/default/files/documents/usb_type-c.zip"
-			(at 607.06 55.88 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "USB 2.0-only 16P Type-C Receptacle connector"
-			(at 603.25 55.88 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "A12"
-			(uuid "e36eaf2d-28ba-435f-9f3e-86bb3d4f1a81")
-		)
-		(pin "A6"
-			(uuid "7b988ec3-75c4-4dcd-bb7f-84b737d0d6eb")
-		)
-		(pin "B9"
-			(uuid "03f6d4f6-1e2d-4fce-93b1-56523ed27db9")
-		)
-		(pin "A4"
-			(uuid "3c8e9540-7f5e-4a22-8847-81875106ca1d")
-		)
-		(pin "A8"
-			(uuid "fcfe713d-fa40-4bd5-b291-36219524e263")
-		)
-		(pin "A5"
-			(uuid "6c493523-953f-4c82-8e1b-e409c639d445")
-		)
-		(pin "A9"
-			(uuid "adf1171b-cf68-4731-babf-f0c13b5e9326")
-		)
-		(pin "B5"
-			(uuid "e1151324-144d-41c5-839f-196585e8e952")
-		)
-		(pin "A1"
-			(uuid "78ab98b0-6813-4bb9-b008-59bdb3f0211d")
-		)
-		(pin "A7"
-			(uuid "0b3a7926-5238-4d66-a141-53e2a40f169e")
-		)
-		(pin "B1"
-			(uuid "10bb261e-bf5a-49cc-a503-0e80228f3d1b")
-		)
-		(pin "B6"
-			(uuid "957e6eef-fd0a-424c-a303-ae8534d87fb0")
-		)
-		(pin "B4"
-			(uuid "640aaf61-f764-4cc2-800a-c16e9da27b69")
-		)
-		(pin "B7"
-			(uuid "613685f1-16ed-41b7-a5a6-50fa63107df3")
-		)
-		(pin "B8"
-			(uuid "27041034-9dd4-4e77-8ed6-e1ac3b5d05d1")
-		)
-		(pin "B12"
-			(uuid "a89da06f-2f35-475d-ad7d-b855cbae3998")
-		)
-		(pin "SH"
-			(uuid "b868ad83-1feb-4ffa-82a1-377a188d91a9")
-		)
-		(instances
-			(project "CellKeeper"
-				(path "/5d962221-5e0a-481f-afc5-67c7ec101fc1"
-					(reference "J13")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "CellKeeper_Local:Isolator__LTV-817S")
 		(at 288.29 214.63 0)
 		(unit 1)
@@ -94233,6 +94194,84 @@
 			(project "CellKeeper"
 				(path "/5d962221-5e0a-481f-afc5-67c7ec101fc1"
 					(reference "R89")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CellKeeper_Local:Mechanical__MountingHole_Pad")
+		(at 972.82 172.72 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp yes)
+		(uuid "b6642f57-4bac-42ef-9b65-293019cfb53e")
+		(property "Reference" "H7"
+			(at 975.36 170.1799 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "MountingHole_Pad"
+			(at 975.36 172.7199 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "CellKeeper_Local:MountingHole__MountingHole_3.7mm"
+			(at 972.82 172.72 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 972.82 172.72 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Mounting Hole with connection"
+			(at 972.82 172.72 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "120fb3b8-31f2-492c-ba7d-1e4b34ad91cc")
+		)
+		(instances
+			(project "CellKeeper"
+				(path "/5d962221-5e0a-481f-afc5-67c7ec101fc1"
+					(reference "H7")
 					(unit 1)
 				)
 			)

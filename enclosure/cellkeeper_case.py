@@ -22,7 +22,9 @@ SPLIT_X with bowtie key pockets on the inside faces (print 6 keys, glue them in 
 Lid markings (the board's logo, the HV warning and the button labels) come two ways: debossed
 0.6 mm (lid), or as a 0.2 mm pocket plus a separate inlay body for a second filament on the first
 layer (lid_2color: the STEP holds both bodies; load it as one object with two parts).
-Both lid STEPs also carry a "light_pipes" part filling the LED tunnels, for a clear filament.
+The lid STEPs also carry a "light_windows" part: a 0.4 mm clear disc (two layers) closing the top of
+each LED tunnel, for a clear filament; the tunnels below stay hollow. The *_open files leave the
+tunnels fully open instead.
 Print files go to output/print as STEP and STL, already oriented for printing.
 output/kicad holds coloured base/lid/inlay STEPs in board position for the board-only
 CellKeeper_Enclosure footprint (lib/CellKeeper_Local.pretty), placed at (0, 0) on the board.
@@ -224,7 +226,8 @@ TUBE_OD, TUBE_ID, TUBE_GAP = 5.2, 2.2, 1.3
 
 DEBOSS = 0.6          # marking depth on the single-colour lid
 CASE_RGB, INLAY_RGB = (0.20, 0.21, 0.23), (0.95, 0.95, 0.95)   # KiCad 3D viewer colours
-PIPE_RGB = (0.80, 0.90, 1.00)   # light pipes (clear filament); colour only tells the parts apart
+WINDOW_RGB = (0.80, 0.90, 1.00)   # light windows (clear filament); colour only tells the parts apart
+LIGHT_WINDOW = 0.4   # clear window thickness at the top of each LED tunnel (two 0.2 mm layers)
 INLAY = 0.2           # marking pocket depth and inlay thickness on the two-colour lid (1 layer)
 SPLIT_X = 251.0       # between the J14 and J20 openings, clear of the labels and light holes
 KEY_LEN, KEY_END_W, KEY_WAIST_W, KEY_T, KEY_DEPTH, KEY_CLR = 20.0, 10.0, 5.0, 1.5, 1.6, 0.15
@@ -580,10 +583,10 @@ def marking_faces():
     return faces
 
 
-def light_pipes():
-    """The LED tunnels filled solid, from each tube's bottom to the lid top, as one part."""
-    return Compound([cyl(x, -y, LED_HOLE_D, LED_TUBE_FIT.get((x, y), (LED_TUBE_OD, LED_TOP + LED_GAP))[1], Z_TOP)
-                     for x, y in LEDS])
+def light_windows():
+    """A clear disc closing the top LIGHT_WINDOW of each LED tunnel, as one part. (Solid clear
+    rods down the whole tunnel spread the light too much.)"""
+    return Compound([cyl(x, -y, LED_HOLE_D, Z_TOP - LIGHT_WINDOW, Z_TOP) for x, y in LEDS])
 
 
 def marks(z0, h):
@@ -670,7 +673,7 @@ def main():
     lid = body - marks(Z_TOP - DEBOSS, DEBOSS + 0.1)       # single colour: debossed markings
     lid2 = body - marks(Z_TOP - INLAY, INLAY + 0.1)        # two colour: a one-layer pocket...
     inlay = marks(Z_TOP - INLAY, INLAY)                    # ...filled by this second body
-    pipes = light_pipes()                                   # clear fill for the LED tunnels
+    windows = light_windows()                               # clear tops of the LED tunnels
     screws = [Pos(x, -y, SCREW_TIP_Z) * bracket_screw() for x, y in VEH_MOUNTS]
     export_step(Compound([base, lid, *screws], label="cellkeeper_case"), str(args.out / "cellkeeper_case_assembly.step"))
     export_step(bracket_screw(), str(args.out / "bracket_screw.step"))
@@ -694,11 +697,11 @@ def main():
     pr = args.out / "print"
     pr.mkdir(exist_ok=True)
 
-    def save(name, part, inlay_part=None, pipe_part=None):
-        """STEP with one part per body (case, then inlay and light pipes when given) plus an STL
-        per body."""
+    def save(name, part, inlay_part=None, window_part=None):
+        """STEP with one part per body (case, then inlay and light windows when given) plus an
+        STL per body."""
         parts = [("case", part, CASE_RGB)]
-        for label, extra, rgb in [("inlay", inlay_part, INLAY_RGB), ("light_pipes", pipe_part, PIPE_RGB)]:
+        for label, extra, rgb in [("inlay", inlay_part, INLAY_RGB), ("light_windows", window_part, WINDOW_RGB)]:
             if extra is not None and extra.solids():
                 parts.append((label, extra, rgb))
                 export_stl(extra, str(pr / f"{name}_{label}.stl"))
@@ -709,21 +712,27 @@ def main():
         export_stl(part, str(pr / f"{name}.stl"))
 
     save("base", base)
-    save("lid", flip(lid), pipe_part=flip(pipes))
-    save("lid_2color", flip(lid2), flip(inlay), flip(pipes))
+    save("lid", flip(lid), window_part=flip(windows))
+    save("lid_2color", flip(lid2), flip(inlay), flip(windows))
+    save("lid_open", flip(lid))                      # LED tunnels left open
+    save("lid_2color_open", flip(lid2), flip(inlay))
 
     base_l, base_r = split(base, BASE_KEY_Y, -STANDOFF - KEY_DEPTH, -STANDOFF + 1)
     lid_keys = (LID_KEY_Y, LID_INNER - 1, LID_INNER + KEY_DEPTH)
     lid_l, lid_r = split(lid, *lid_keys)
     lid2_l, lid2_r = split(lid2, *lid_keys)
     inlay_l, inlay_r = halves(inlay)
-    pipes_l, pipes_r = halves(pipes)
+    windows_l, windows_r = halves(windows)
     save("split_base_left", base_l)
     save("split_base_right", base_r)
-    save("split_lid_left", flip(lid_l), pipe_part=flip(pipes_l))
-    save("split_lid_right", flip(lid_r), pipe_part=flip(pipes_r))
-    save("split_lid_left_2color", flip(lid2_l), flip(inlay_l), flip(pipes_l))
-    save("split_lid_right_2color", flip(lid2_r), flip(inlay_r), flip(pipes_r))
+    save("split_lid_left", flip(lid_l), window_part=flip(windows_l))
+    save("split_lid_right", flip(lid_r), window_part=flip(windows_r))
+    save("split_lid_left_2color", flip(lid2_l), flip(inlay_l), flip(windows_l))
+    save("split_lid_right_2color", flip(lid2_r), flip(inlay_r), flip(windows_r))
+    save("split_lid_left_open", flip(lid_l))
+    save("split_lid_right_open", flip(lid_r))
+    save("split_lid_left_2color_open", flip(lid2_l), flip(inlay_l))
+    save("split_lid_right_2color_open", flip(lid2_r), flip(inlay_r))
     save("split_key_x6", extrude(bowtie(), amount=KEY_T))
 
     bb = Compound([base, lid]).bounding_box()

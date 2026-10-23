@@ -50,7 +50,8 @@ from OCP.XCAFApp import XCAFApp_Application
 from OCP.XCAFDoc import XCAFDoc_ColorType, XCAFDoc_DocumentTool
 from build123d import (
     Align, Box, Circle, Color, Compound, Cone, Cylinder, Edge, Face, FontStyle, Kind, Polygon, Pos,
-    Rectangle, RectangleRounded, Rot, SlotOverall, Text, Vector, Wire, export_step, export_stl, extrude,
+    Helix, Rectangle, RectangleRounded, RegularPolygon, Rot, SlotOverall, Text, Vector, Wire, export_step,
+    export_stl, extrude, sweep,
     import_step, offset,
 )
 
@@ -183,7 +184,19 @@ LED_TUBE_FIT = {(91.329, 72.150): (5.2, 4.3), (87.329, 53.112): (5.2, 4.3)}
 # Penthouse brackets screw into the lid top above H3/H4: (x, y) in KiCad coordinates.
 VEH_MOUNTS = [(56.129276, 146.887018), (302.129276, 146.887018)]
 VEH_SEAT_ABOVE_PCB = 20.0   # bracket seat above the PCB top surface (original HVC: 17.4)
-VEH_HOLE_D, VEH_HOLE_DEPTH = 4.3, 16.0   # runs into the M3 pilot below: one stepped hole
+VEH_HOLE_DEPTH = 16.0       # bracket hole depth below the seat; runs into the M3 pilot below
+
+# The bracket screw, measured from the original (photos, 2026-10-23): a thread-forming screw for
+# plastic, PT style with a 30 deg thread, flange head with an external hex-lobular drive. Its
+# thread is cut into the bracket holes (plus the core diameter on down to VEH_HOLE_DEPTH), and the
+# screws appear in the KiCad lid model. SCREW_HEAD_GAP is the bracket tab: head underside above
+# the lid top. SCREW_FIT grows the cut thread radially (0 = the screw itself).
+SCREW_D, SCREW_CORE_D, SCREW_PITCH, SCREW_L = 4.9, 3.0, 1.8, 19.0
+SCREW_FLANK_DEG, SCREW_APEX_W = 30.0, 0.12
+SCREW_TIP_L, SCREW_TIP_D = 4.2, 1.0   # pointed tip cone (to the thread diameter); thread runs onto it
+SCREW_FLANGE_D, SCREW_FLANGE_T, SCREW_HEAD_AF, SCREW_HEAD_H = 9.8, 1.5, 5.6, 4.6
+SCREW_HEAD_GAP, SCREW_FIT = 6.0, 0.0
+SCREW_RGB = (0.75, 0.75, 0.76)
 VEH_BOSS_D = 20.0           # nothing on the board within 13.8 mm of H3/H4; merges into the walls
 VEH_INDENT_W = 18.0         # only used when the seat is below the lid top
 
@@ -226,6 +239,8 @@ Z_BOT = -(STANDOFF + FLOOR)
 Z_TOP = PCB_T + TOP_ABOVE_PCB
 LID_INNER = Z_TOP - TOP
 Z_SEAT = PCB_T + VEH_SEAT_ABOVE_PCB
+SCREW_TIP_Z = Z_SEAT + SCREW_HEAD_GAP - SCREW_L   # bracket screw tip, with the head SCREW_HEAD_GAP up
+SCREW_CORE_TIP_L = SCREW_TIP_L * (SCREW_CORE_D - SCREW_TIP_D) / (SCREW_D - SCREW_TIP_D)   # tip cone meets the core
 M3_PILOT_TOP = Z_TOP - M3_PILOT_SKIN
 # The head bears on the 45 deg seat where it narrows to the head diameter; thread counts from
 # the end of the lead-in.
@@ -315,6 +330,40 @@ def board_screw(x, y):
     return BOARD_SCREWS_AT_H3_H4 or (x, y) not in VEH_MOUNTS
 
 
+def bracket_screw(fit=0.0, head=True):
+    """The penthouse bracket screw with its tip at the origin, pointing down (-Z is the tip end):
+    a 30 deg thread swept along a helix on a core, both tapering into the pointed tip, under a
+    flange and hex head (a hexagon stands in for the hex-lobular drive). fit grows the thread and
+    core radially, for cutting the matching thread into the lid."""
+    r_core, r_major = SCREW_CORE_D / 2 + fit, SCREW_D / 2 + fit
+    root_w = SCREW_APEX_W + 2 * (r_major - r_core) * np.tan(np.radians(SCREW_FLANK_DEG / 2))
+    r0 = r_core - 0.05   # the thread profile sinks into the core so the two fuse
+    helix = Helix(pitch=SCREW_PITCH, height=SCREW_L + SCREW_PITCH, radius=r0, center=(0, 0, -SCREW_PITCH / 2))
+    start = helix.position_at(0)
+    a = np.arctan2(start.Y, start.X)
+    profile = [(r0, -root_w / 2), (r_major, -SCREW_APEX_W / 2), (r_major, SCREW_APEX_W / 2), (r0, root_w / 2)]
+    thread = sweep(Face(Wire.make_polygon([Vector(r * np.cos(a), r * np.sin(a), start.Z + z) for r, z in profile],
+                                          close=True)), path=helix, is_frenet=True)
+    up = (Align.CENTER, Align.CENTER, Align.MIN)
+    # A plain core along the whole thread fuses cleanly; the tip cone then trims both to the point.
+    core = Pos(0, 0, -SCREW_PITCH) * Cylinder(r_core, SCREW_L + 2 * SCREW_PITCH, align=up)
+    r_env = r_major + 0.05   # just outside the crests, so no faces coincide
+    envelope = Cone(SCREW_TIP_D / 2, r_env, SCREW_TIP_L, align=up) + \
+        Pos(0, 0, SCREW_TIP_L) * Cylinder(r_env, SCREW_L - SCREW_TIP_L, align=up)
+    screw = _one_solid((thread + core) & envelope)
+    if head:
+        screw += Pos(0, 0, SCREW_L) * Cylinder(SCREW_FLANGE_D / 2, SCREW_FLANGE_T, align=up)
+        screw += extrude(Pos(0, 0, SCREW_L + SCREW_FLANGE_T) * RegularPolygon(SCREW_HEAD_AF / np.sqrt(3), 6),
+                         amount=SCREW_HEAD_H)
+    return screw
+
+
+def _one_solid(shape):
+    """The single solid of a boolean result that came back wrapped in a compound or list."""
+    solids = shape.solids()
+    return solids[0] if len(solids) == 1 else Compound(list(solids))
+
+
 def pillar_d(hole_d):
     # Mounting-hole courtyards are r 4.0 (3.7 mm) and r 5.2 (5 mm); stay inside them.
     return 7.6 if hole_d < 4 else 10.0
@@ -383,7 +432,9 @@ def build_lid():
         if Z_SEAT < Z_TOP:
             w = VEH_INDENT_W / 2
             lid -= edge_cut("S", x - w, x + w, Z_SEAT, Z_TOP + 1, -(BY1 - y) - w)
-        lid -= cyl(x, -y, VEH_HOLE_D, Z_SEAT - VEH_HOLE_DEPTH, Z_TOP + 1)
+        lid -= Pos(x, -y, SCREW_TIP_Z) * bracket_screw(SCREW_FIT, head=False)
+        lid -= cyl(x, -y, SCREW_CORE_D + 2 * SCREW_FIT, Z_SEAT - VEH_HOLE_DEPTH, SCREW_TIP_Z + SCREW_CORE_TIP_L)
+    lid = _one_solid(lid).fix()   # the helical cut leaves loose tolerances; fix() settles them
 
     for label, x, y in BUTTONS:
         lid += cyl(x, -y, TUBE_OD, BUTTON_TOP + TUBE_GAP, LID_INNER + 0.1)
@@ -620,7 +671,9 @@ def main():
     lid2 = body - marks(Z_TOP - INLAY, INLAY + 0.1)        # two colour: a one-layer pocket...
     inlay = marks(Z_TOP - INLAY, INLAY)                    # ...filled by this second body
     pipes = light_pipes()                                   # clear fill for the LED tunnels
-    export_step(Compound([base, lid], label="cellkeeper_case"), str(args.out / "cellkeeper_case_assembly.step"))
+    screws = [Pos(x, -y, SCREW_TIP_Z) * bracket_screw() for x, y in VEH_MOUNTS]
+    export_step(Compound([base, lid, *screws], label="cellkeeper_case"), str(args.out / "cellkeeper_case_assembly.step"))
+    export_step(bracket_screw(), str(args.out / "bracket_screw.step"))
 
     # Coloured models in board position for the CellKeeper_Enclosure footprint in KiCad: the
     # two-colour lid and its inlay, so the 3D viewer shows the printed logo colour.
@@ -630,6 +683,10 @@ def main():
         part.label = f"case_{name}"
         for p in [part, *getattr(part, "children", ())]:
             p.color = Color(*rgb)
+        if name == "lid":   # the bracket screws ride along with the lid, in their own colour
+            for screw in screws:
+                screw.color, screw.label = Color(*SCREW_RGB), "bracket_screw"
+            part = Compound(children=[part, *screws], label="case_lid")
         export_step(part, str(kc / f"case_{name}.step"))
 
     # Print orientation: base floor down, lid upside down on its top face (markings on the bed).
@@ -680,7 +737,8 @@ def main():
     print(f"hardware: {n}x M3x{M3_SCREW:.0f} SHCS from below, self-tapping into the lid "
           f"({M3_ENGAGE:.1f} mm engagement{h34})")
     print(f"bracket seat {VEH_SEAT_ABOVE_PCB:.1f} mm above the PCB top, {Z_SEAT - Z_BOT:.1f} mm above "
-          f"the case bottom; {VEH_HOLE_D} mm holes {VEH_HOLE_DEPTH:.0f} mm deep")
+          f"the case bottom; holes threaded for the {SCREW_D} x {SCREW_PITCH} bracket screw, "
+          f"{VEH_HOLE_DEPTH:.0f} mm deep")
     if args.check:
         check({"base": base, "lid": lid}, args.board)
 

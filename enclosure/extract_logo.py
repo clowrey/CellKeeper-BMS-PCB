@@ -1,10 +1,13 @@
-"""Copy the CellKeeper logo (battery icons + lettering) from the board's front silkscreen into
-cellkeeper_logo.json, for cellkeeper_case.py to put on the lid (which refits it as curves).
+"""Copy the CellKeeper logo (battery icons + lettering) from the board's front silkscreen, and the
+UK + Ireland + Hawaii map from its back silkscreen, into cellkeeper_logo.json, for
+cellkeeper_case.py to put on the lid top and the base underside (it refits both as curves).
 
     python extract_logo.py [../CellKeeper/CellKeeper.kicad_pcb]
 
-The logo is the filled F.SilkS polygons inside LOGO_BOX. Output points are in mm, centred on the
-logo, y pointing up (KiCad y is flipped).
+The logo is the filled F.SilkS polygons inside LOGO_BOX, the map the B.SilkS polygons inside
+UNDERSIDE_BOX (kept as seen from above, i.e. mirrored, so it reads correctly from below). Points
+are in mm, centred on each graphic (its centre in KiCad coordinates is stored too), y pointing up
+(KiCad y is flipped).
 """
 
 import json
@@ -15,6 +18,7 @@ import sexpdata
 from sexpdata import Symbol
 
 LOGO_BOX = (170.0, 76.0, 210.0, 96.5)   # KiCad x0, y0, x1, y1 around the logo on Rev 1.1
+UNDERSIDE_BOX = (125.0, 55.0, 220.0, 118.0)   # around the UK + Ireland and Hawaii map (B.SilkS)
 
 
 def name(n):
@@ -66,14 +70,13 @@ def split_keyholes(pts):
     return rings[0], rings[1:]
 
 
-def main():
-    here = Path(__file__).resolve().parent
-    pcb_path = Path(sys.argv[1]) if len(sys.argv) > 1 else here.parent / "CellKeeper" / "CellKeeper.kicad_pcb"
-    pcb = sexpdata.loads(pcb_path.read_text(encoding="utf-8"))
-    x0, y0, x1, y1 = LOGO_BOX
+def graphic(pcb, layer, box):
+    """Filled polygons of a silkscreen layer inside box, split into outer rings and holes, centred
+    and y-flipped; plus the centre and size in KiCad coordinates."""
+    x0, y0, x1, y1 = box
     polys = []
     for g in pcb:
-        if name(g) != "gr_poly" or child(g, "layer")[1] != "F.SilkS":
+        if name(g) != "gr_poly" or child(g, "layer")[1] != layer:
             continue
         pts = [(p[1], p[2]) for p in child(g, "pts") if name(p) == "xy"]
         if all(x0 <= x <= x1 and y0 <= y <= y1 for x, y in pts):
@@ -86,13 +89,21 @@ def main():
     for p in polys:
         outer, holes = split_keyholes(p)
         shapes.append({"outer": local(outer), "holes": [local(h) for h in holes]})
-    out = {
-        "source": pcb_path.name,
-        "size": [round(max(xs) - min(xs), 3), round(max(ys) - min(ys), 3)],
-        "shapes": shapes,
-    }
+    return {"center": [round(cx, 4), round(cy, 4)],
+            "size": [round(max(xs) - min(xs), 3), round(max(ys) - min(ys), 3)], "shapes": shapes}
+
+
+def main():
+    here = Path(__file__).resolve().parent
+    pcb_path = Path(sys.argv[1]) if len(sys.argv) > 1 else here.parent / "CellKeeper" / "CellKeeper.kicad_pcb"
+    pcb = sexpdata.loads(pcb_path.read_text(encoding="utf-8"))
+    logo = graphic(pcb, "F.SilkS", LOGO_BOX)
+    underside = graphic(pcb, "B.SilkS", UNDERSIDE_BOX)
+    out = {"source": pcb_path.name, "size": logo["size"], "shapes": logo["shapes"], "underside": underside}
     (here / "cellkeeper_logo.json").write_text(json.dumps(out), encoding="utf-8")
-    print(f"logo: {len(shapes)} shapes, {out['size'][0]} x {out['size'][1]} mm -> cellkeeper_logo.json")
+    print(f"logo: {len(logo['shapes'])} shapes, {logo['size'][0]} x {logo['size'][1]} mm; "
+          f"underside map: {len(underside['shapes'])} shapes, {underside['size'][0]} x {underside['size'][1]} mm "
+          f"at {underside['center']} -> cellkeeper_logo.json")
 
 
 if __name__ == "__main__":
